@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "127727317066",
+    "project_id": "bikezoneapp",
+    "storage_bucket": "bikezoneapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127727317066:android:ce1bc61805696eba8cb6b3",
+        "android_client_info": {
+          "package_name": "com.example.bike_zone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "127727317066-j64pqd6cedl1a1d39sr5cjm1pvvv7ol1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bike_zone",
+            "certificate_hash": "26ce5b014b7d742eed5864d1f61525809b1e626d"
+          }
+        },
+        {
+          "client_id": "127727317066-3euijdf2pqf05fvqe3u7c682ea2nl7sv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPg3xKBjr_OtOPLeUEE1dWJNmTrZoSxHk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127727317066-3euijdf2pqf05fvqe3u7c682ea2nl7sv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

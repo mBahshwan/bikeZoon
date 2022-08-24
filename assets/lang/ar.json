@@ -1,0 +1,27 @@
+{
+    "create rent agrement" : "انشاء عقد جديد",
+    "show customers" : "عرض العملاء",
+    "current renters" : "المستأجرين الحاليين",
+    "customer list" : "قايمه العملاء",
+    "rent agreement" : "عقد ايجار",
+    "customer details" : "تفاصيل العميل",
+    "customer name" : "اسم العميل",
+    "customer number" : "رقم الهاتف",
+    "customer id" : "رقم الهويه",
+    "how long" : "عدد الساعات",
+    "one hour" : "ساعه",
+    "half an hour" : "نصف ساعه",
+    "how many adult bicycle" : "(كبار) عدد الدراجات" ,
+    "how many kidz bicycle" : "عدد الدراجات (صغار)",
+    "price" : "السعر",
+    "rial" : "ريال",
+    "total" : "المجموع",
+    "number of visits" : "عدد الزيارات" ,
+    "customer visit date" : "تاريخ زيارة العميل",
+    "customer login time" : "وقت دخول العميل",
+    "rent duration" : "المده المستأجره",
+    "delete note1" : " ملاحظه : اذا ضغطت على السله سيتم حذف",
+    "delete note2" : "صاحب رقم الهاتف",
+    "sure delete" : "هل انت متاكد من انك تريد الحذف"
+
+}
