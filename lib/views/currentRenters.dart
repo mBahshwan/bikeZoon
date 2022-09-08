@@ -14,6 +14,9 @@ class CurrentRentrs extends StatefulWidget {
 class _CurrentRentrsState extends State<CurrentRentrs> {
   CurrentRentersViewModel _currentRentersViewModel = CurrentRentersViewModel();
 
+  bool timeUp = false;
+  String? customerComingTime;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,8 +37,8 @@ class _CurrentRentrsState extends State<CurrentRentrs> {
             return ListView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: (context, i) {
-                String customerComingTime =
-                    Jiffy("${snapshot.data![i].time}").format("h : m : s");
+                customerComingTime =
+                    "${Jiffy("${snapshot.data![i].time}").fromNow()}";
 
                 return Container(
                   height: 250,
@@ -118,15 +121,17 @@ class _CurrentRentrsState extends State<CurrentRentrs> {
                                                   onPressed: () {
                                                     Navigator.of(context).pop();
                                                   },
-                                                  icon: Icon(Icons.cancel))
+                                                  icon: Icon(
+                                                    Icons.cancel,
+                                                  ))
                                             ],
                                           ));
                                 },
-                                icon: Icon(
-                                  Icons.circle,
-                                  size: 20,
-                                  color: Colors.blue,
-                                )),
+                                icon: Icon(Icons.circle,
+                                    size: 20,
+                                    color: customerComingTime == 'an hour ago'
+                                        ? Colors.red
+                                        : Colors.blue)),
                           ],
                         ),
                         SizedBox(height: 10),
