@@ -15,6 +15,7 @@ import 'package:bike_zone/widgets/textforminformation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class AgreementScreenWidget extends StatefulWidget {
   final String? customer_Name;
@@ -91,16 +92,41 @@ class _AgreementScreenWidgetState extends State<AgreementScreenWidget> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    TextFormInfo(
-                      infoType: "${getLang(context, "customer number")} ",
-                      keybordType: TextInputType.phone,
-                      controller: customerPhoneNumber,
-                    ),
+                    Expanded(
+                        flex: 2,
+                        child: Container(
+                          width: 100,
+                          decoration:
+                              BoxDecoration(border: Border.all(width: 1)),
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          child: TypeAheadField<ClientModel>(
+                            textFieldConfiguration: TextFieldConfiguration(
+                                keyboardType: TextInputType.number,
+                                textAlign: TextAlign.center,
+                                controller: customerPhoneNumber,
+                                decoration: InputDecoration(
+                                    hintText:
+                                        "${getLang(context, "customer number")} ",
+                                    border: OutlineInputBorder())),
+                            suggestionsCallback:
+                                ClientViewModel.getClientToSearchByNumber,
+                            itemBuilder: (context, itemData) => ListTile(
+                                title: Text(itemData.phoneNumber.toString())),
+                            onSuggestionSelected: (suggestion) {
+                              customerName.text = suggestion.name!;
+                              customerId.text = suggestion.id!;
+                              customerPhoneNumber.text =
+                                  suggestion.phoneNumber!;
+                            },
+                            hideOnEmpty: true,
+                          ),
+                        )),
                     const SizedBox(width: 10),
                     TextFormInfo(
-                        infoType: "${getLang(context, "customer name")} ",
-                        keybordType: TextInputType.name,
-                        controller: customerName),
+                      infoType: "${getLang(context, "customer name")} ",
+                      keybordType: TextInputType.name,
+                      controller: customerName,
+                    ),
                   ],
                 ),
                 Row(
@@ -111,10 +137,35 @@ class _AgreementScreenWidgetState extends State<AgreementScreenWidget> {
                     const SizedBox(
                       width: 10,
                     ),
-                    TextFormInfo(
-                        infoType: "${getLang(context, "customer id")} ",
-                        keybordType: TextInputType.number,
-                        controller: customerId),
+                    Expanded(
+                        flex: 2,
+                        child: Container(
+                          width: 100,
+                          decoration:
+                              BoxDecoration(border: Border.all(width: 1)),
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          child: TypeAheadField<ClientModel>(
+                            textFieldConfiguration: TextFieldConfiguration(
+                                keyboardType: TextInputType.number,
+                                textAlign: TextAlign.center,
+                                controller: customerId,
+                                decoration: InputDecoration(
+                                    hintText:
+                                        "${getLang(context, "customer id")} ",
+                                    border: OutlineInputBorder())),
+                            suggestionsCallback:
+                                ClientViewModel.getClientToSearchById,
+                            itemBuilder: (context, itemData) =>
+                                ListTile(title: Text(itemData.id.toString())),
+                            onSuggestionSelected: (suggestion) {
+                              customerName.text = suggestion.name!;
+                              customerId.text = suggestion.id!;
+                              customerPhoneNumber.text =
+                                  suggestion.phoneNumber!;
+                            },
+                            hideOnEmpty: true,
+                          ),
+                        )),
                   ],
                 ),
                 Padding(

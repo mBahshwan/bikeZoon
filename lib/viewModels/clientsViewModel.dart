@@ -4,13 +4,38 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ClientViewModel {
   ClientModel clientModel = ClientModel();
-  CollectionReference renterRef =
+  static CollectionReference renterRef =
       FirebaseFirestore.instance.collection("renters");
 
   @override
   Future<List<ClientModel>> readData() async {
     QuerySnapshot response = await renterRef.get();
     return response.docs.map((e) => ClientModel.fromFirebase(e)).toList();
+  }
+
+  static Future<List<ClientModel>> getClientToSearchByNumber(
+      String query) async {
+    QuerySnapshot response = await renterRef.get();
+
+    return response.docs
+        .map((e) => ClientModel.fromFirebase(e))
+        .where((element) {
+      String studentname = element.phoneNumber.toString();
+      String querySearch = query.toLowerCase();
+      return studentname.contains(querySearch);
+    }).toList();
+  }
+
+  static Future<List<ClientModel>> getClientToSearchById(String query) async {
+    QuerySnapshot response = await renterRef.get();
+
+    return response.docs
+        .map((e) => ClientModel.fromFirebase(e))
+        .where((element) {
+      String studentname = element.id.toString();
+      String querySearch = query.toLowerCase();
+      return studentname.contains(querySearch);
+    }).toList();
   }
 
   Future<ClientModel> readDataById(String id) async {

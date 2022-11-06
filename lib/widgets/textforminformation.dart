@@ -21,17 +21,14 @@ class TextFormInfo extends StatelessWidget {
         width: 100,
         decoration: BoxDecoration(border: Border.all(width: 1)),
         margin: EdgeInsets.symmetric(vertical: 10),
-        child: Form(
-          key: formState,
-          child: TextFormField(
-            controller: controller,
-            keyboardType: keybordType,
-            textAlign: TextAlign.center,
-            decoration: InputDecoration(
-                hintText: infoType,
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(2)))),
-          ),
+        child: TextField(
+          controller: controller,
+          keyboardType: keybordType,
+          textAlign: TextAlign.center,
+          decoration: InputDecoration(
+              hintText: infoType,
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(2)))),
         ),
       ),
     );
