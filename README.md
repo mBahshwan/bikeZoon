@@ -15,6 +15,7 @@ this application was built to make it as contract instead of papers.
 ## Features :
 
 * note down the customer entering time
+* using Cloud Firestore database
 * The merchant can see how often the customer visits
 * both English and Arabic localization are available in the app 
 
